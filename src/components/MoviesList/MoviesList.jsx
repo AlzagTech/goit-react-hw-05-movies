@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
 
-import { ListTitle, ListItem } from './TrendingMoviesList.styled';
+import { ListItem } from './MoviesList.styled';
 
-const TrendingMoviesList = ({ movies, state }) => {
+const MoviesList = ({ movies, state }) => {
   return (
     <div>
-      <ListTitle>Trending today</ListTitle>
-
       <ul>
         {' '}
         <ul>
@@ -25,4 +23,4 @@ const TrendingMoviesList = ({ movies, state }) => {
   );
 };
 
-export default TrendingMoviesList;
+export default MoviesList;

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import TrendingMoviesList from 'components/TrendingMoviesList/TrendingMoviesList';
+import MoviesList from 'components/MoviesList/MoviesList';
+import { ListTitle } from 'components/MoviesList/MoviesList.styled';
 
 import * as API from '../services/movies-api';
 
@@ -27,7 +28,8 @@ const Home = () => {
 
   return (
     <div>
-      <TrendingMoviesList movies={movies} state={{ from: location }} />
+      <ListTitle>Trending today</ListTitle>
+      <MoviesList movies={movies} state={{ from: location }} />
     </div>
   );
 };

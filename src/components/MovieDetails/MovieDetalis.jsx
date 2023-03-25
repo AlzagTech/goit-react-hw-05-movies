@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 import { GoBackBtn, MovieDetailsBox } from './MovieDetalis.styled';
 
@@ -7,6 +7,7 @@ import * as API from '../../services/movies-api';
 
 const MovieDetails = () => {
   const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
   const { movieId } = useParams();
   const [movieDetails, setMoviesDetails] = useState({});
   const [error, setError] = useState(false);
@@ -45,30 +46,48 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <GoBackBtn to={location.state.from}>← Go back</GoBackBtn>
+      <GoBackBtn to={backLinkLocationRef.current}>← Go back</GoBackBtn>
 
       {error ? (
         <p>Opps... something went wrong!</p>
       ) : (
-        <MovieDetailsBox>
-          <img src={moviePoster} alt="" />
+        <>
+          <MovieDetailsBox>
+            <img src={moviePoster} alt="" />
+            <div>
+              <h2>{title || name}</h2>
+              <span>User Score: {userScore}%</span>
+              {overview && (
+                <>
+                  <h3>Overview</h3>
+                  <p>{overview}</p>
+                </>
+              )}
+              {movieGenres && (
+                <>
+                  <h3>Genres</h3>
+                  <p>{movieGenres}</p>
+                </>
+              )}
+            </div>
+          </MovieDetailsBox>
           <div>
-            <h2>{title || name}</h2>
-            <span>User Score: {userScore}%</span>
-            {overview && (
-              <>
-                <h3>Overview</h3>
-                <p>{overview}</p>
-              </>
-            )}
-            {movieGenres && (
-              <>
-                <h3>Genres</h3>
-                <p>{movieGenres}</p>
-              </>
-            )}
+            <p>Additional information</p>
+            <ul>
+              <li>
+                <Link to="cast">Cast</Link>
+              </li>
+              <li>
+                <Link to="reviews">Reviews</Link>
+              </li>
+            </ul>
           </div>
-        </MovieDetailsBox>
+          <div>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Outlet />
+            </Suspense>
+          </div>
+        </>
       )}
     </div>
   );
