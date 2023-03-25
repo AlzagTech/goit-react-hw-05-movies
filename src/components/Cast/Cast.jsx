@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 
 import * as API from '../../services/movies-api';
 
+import { CastItem } from './Cast.styled';
+
 const Cast = () => {
   const { movieId } = useParams();
   const [movieCast, setMoviesCast] = useState([]);
@@ -14,7 +16,6 @@ const Cast = () => {
         setMoviesCast(data.cast);
         console.log(data.cast);
       } catch (error) {
-        // setError(true);
         console.log(error);
       }
     };
@@ -31,14 +32,14 @@ const Cast = () => {
       <ul>
         {movieCast &&
           movieCast.map(item => (
-            <li key={item.id + item.cast_id}>
+            <CastItem key={item.id + item.cast_id}>
               <img
                 src={`https://image.tmdb.org/t/p/w200/${item.profile_path}`}
                 alt=""
               />
               <p>{item.name}</p>
               <p>Character: {item.character}</p>
-            </li>
+            </CastItem>
           ))}
       </ul>
     </div>

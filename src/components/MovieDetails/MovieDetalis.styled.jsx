@@ -17,6 +17,7 @@ export const GoBackBtn = styled(NavLink)`
 export const MovieDetailsBox = styled.div`
   display: flex;
   gap: 20px;
+  margin-bottom: 20px;
 
   img {
     width: 200px;

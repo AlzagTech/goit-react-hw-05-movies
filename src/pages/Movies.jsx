@@ -18,10 +18,13 @@ const Movies = () => {
     }
 
     const getSearchMovies = async () => {
-      const data = await API.fetchSearchMovies(query);
+      try {
+        const data = await API.fetchSearchMovies(query);
 
-      setSearchMovies(data.results);
-      console.log(data.results);
+        setSearchMovies(data.results);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     getSearchMovies();

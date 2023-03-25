@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 
 import * as API from '../../services/movies-api';
 
+import { ReviewItem } from './Reviews.styled';
+
 const Reviews = () => {
   const { movieId } = useParams();
   const [movieReviews, setMoviesReviews] = useState([]);
@@ -14,7 +16,6 @@ const Reviews = () => {
         setMoviesReviews(data.results);
         console.log(data.results);
       } catch (error) {
-        // setError(true);
         console.log(error);
       }
     };
@@ -29,12 +30,16 @@ const Reviews = () => {
   return (
     <div>
       <ul>
-        {movieReviews.map(item => (
-          <li key={item.id}>
-            <p>Author: {item.author}</p>
-            <p> {item.content}</p>
-          </li>
-        ))}
+        {movieReviews.length === 0 ? (
+          <p>We don't have any reviews for this movie.</p>
+        ) : (
+          movieReviews.map(item => (
+            <ReviewItem key={item.id}>
+              <p>Author: {item.author}</p>
+              <p> {item.content}</p>
+            </ReviewItem>
+          ))
+        )}
       </ul>
     </div>
   );

@@ -1,7 +1,8 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 
 import { GoBackBtn, MovieDetailsBox } from './MovieDetalis.styled';
+import AddInfo from 'components/AddInfo/AddInfo';
 
 import * as API from '../../services/movies-api';
 
@@ -71,17 +72,7 @@ const MovieDetails = () => {
               )}
             </div>
           </MovieDetailsBox>
-          <div>
-            <p>Additional information</p>
-            <ul>
-              <li>
-                <Link to="cast">Cast</Link>
-              </li>
-              <li>
-                <Link to="reviews">Reviews</Link>
-              </li>
-            </ul>
-          </div>
+          <AddInfo />
           <div>
             <Suspense fallback={<div>Loading...</div>}>
               <Outlet />

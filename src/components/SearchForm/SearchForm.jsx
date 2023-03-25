@@ -1,14 +1,11 @@
-const SearchForm = ({ onSubmit }) => {
-  // const handleSubmit = (values, actions) => {
-  //   onSubmit(values.query);
-  //   actions.resetForm();
-  // };
+import { Form, FormInput, FormBtn } from '../SearchForm/SearchForm.styled';
 
+const SearchForm = ({ onSubmit }) => {
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" name="query" />
-      <button type="submit">Search</button>
-    </form>
+    <Form onSubmit={onSubmit}>
+      <FormInput type="text" name="query" />
+      <FormBtn type="submit">Search</FormBtn>
+    </Form>
   );
 };
 
