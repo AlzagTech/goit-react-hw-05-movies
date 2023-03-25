@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
-import {
-  GoBackBtn,
-  MovieInfoWrapper,
-  MovieDetailsBox,
-} from './MovieDetalis.styled';
+import { GoBackBtn, MovieDetailsBox } from './MovieDetalis.styled';
 
 import * as API from '../../services/movies-api';
 
@@ -48,7 +44,7 @@ const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <MovieInfoWrapper>
+    <div>
       <GoBackBtn to={location.state.from}>← Go back</GoBackBtn>
 
       {error ? (
@@ -74,7 +70,7 @@ const MovieDetails = () => {
           </div>
         </MovieDetailsBox>
       )}
-    </MovieInfoWrapper>
+    </div>
   );
 };
 

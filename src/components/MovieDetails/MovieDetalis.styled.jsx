@@ -14,10 +14,6 @@ export const GoBackBtn = styled(NavLink)`
   margin-bottom: 16px;
 `;
 
-export const MovieInfoWrapper = styled.div`
-  padding: 20px;
-`;
-
 export const MovieDetailsBox = styled.div`
   display: flex;
   gap: 20px;
