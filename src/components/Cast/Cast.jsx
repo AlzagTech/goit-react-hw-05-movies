@@ -14,7 +14,6 @@ const Cast = () => {
       try {
         const data = await API.fetchMovieCredits(movieId);
         setMoviesCast(data.cast);
-        console.log(data.cast);
       } catch (error) {
         console.log(error);
       }
