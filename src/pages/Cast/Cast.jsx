@@ -20,26 +20,29 @@ const Cast = () => {
     };
 
     getMovieCast();
-
-    return () => {
-      getMovieCast();
-    };
   }, [movieId]);
 
   return (
     <div>
       <ul>
-        {movieCast &&
+        {movieCast.length === 0 ? (
+          <p>We don't have any cast for this movie.</p>
+        ) : (
           movieCast.map(item => (
             <CastItem key={item.id + item.cast_id}>
               <img
-                src={`https://image.tmdb.org/t/p/w200/${item.profile_path}`}
+                src={
+                  item.profile_path
+                    ? `https://image.tmdb.org/t/p/w200/${item.profile_path}`
+                    : 'https://i.ibb.co/FH0M7fB/Untitled-design.jpg'
+                }
                 alt=""
               />
               <p>{item.name}</p>
               <p>Character: {item.character}</p>
             </CastItem>
-          ))}
+          ))
+        )}
       </ul>
     </div>
   );

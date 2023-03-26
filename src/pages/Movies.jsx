@@ -28,23 +28,14 @@ const Movies = () => {
     };
 
     getSearchMovies();
-
-    return () => {
-      getSearchMovies();
-    };
   }, [query]);
 
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    const form = event.currentTarget;
-    const searchQuery = form.elements.query.value;
-
+  const handleSubmit = searchQuery => {
     if (searchQuery) {
       setSearchParams({ query: searchQuery });
     }
 
-    form.reset();
+    return;
   };
 
   return (

@@ -39,10 +39,6 @@ const MovieDetails = () => {
     };
 
     getMovieDetails();
-
-    return () => {
-      getMovieDetails();
-    };
   }, [movieId]);
 
   return (

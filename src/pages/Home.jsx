@@ -19,10 +19,6 @@ const Home = () => {
     };
 
     getTrendingMovies();
-
-    return () => {
-      getTrendingMovies();
-    };
   }, []);
 
   return (

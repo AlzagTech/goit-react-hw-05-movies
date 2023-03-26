@@ -20,10 +20,6 @@ const Reviews = () => {
     };
 
     getMovieReviews();
-
-    return () => {
-      getMovieReviews();
-    };
   }, [movieId]);
 
   return (
